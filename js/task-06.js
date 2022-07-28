@@ -1,12 +1,16 @@
 const inputEl = document.querySelector('input[data-length="6"]');
 
-const testing = () => {
-  if (inputEl.value.length === Number(inputEl.getAttribute("data-length"))) {
-    inputEl.classList.remove("invalid");
-    inputEl.classList.add("valid");
-  } else {
-    inputEl.classList.remove("valid");
-    inputEl.classList.add("invalid");
-  }
+const handleinputClass = (remove, add) => {
+  inputEl.classList.remove(remove);
+  inputEl.classList.add(add);
 };
+
+const testing = () => {
+  const elLength = inputEl.value.length;
+  const elDataLength = Number(inputEl.getAttribute("data-length"));
+  elLength === elDataLength
+    ? handleinputClass("invalid", "valid")
+    : handleinputClass("valid", "invalid");
+};
+
 inputEl.addEventListener("blur", testing);
